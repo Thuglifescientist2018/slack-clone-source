@@ -24,15 +24,22 @@ export default ChatMessage
 
 const Container = styled.div`
     padding: 8px 20px;
+    margin: 20px 0;
     display:flex;
     align-items: center;
-    background: #faf7f7;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    span {
+        color: #ddd !important; 
+    }
     transition: background 0.5s;
     cursor: pointer;
     border-bottom-right-radius: 90px;
     border-top-left-radius: 90px ;
     &:hover {
-        background: #e8e8e8;
+        background: rgba(55, 55, 55, 0.8);
+        box-shadow: inset -2px -2px 5px rgb(100, 100, 100);
+        color: #ddd;
     }
 `;
 

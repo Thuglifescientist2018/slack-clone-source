@@ -13,7 +13,8 @@ import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined'
 import AttachFileOutlinedIcon from '@material-ui/icons/AttachFileOutlined';
 import {Button} from '@material-ui/core';
 
-function ChatInput() {
+function ChatInput(props) {
+
     return (
         <Container>
             <InputContainer>
@@ -34,8 +35,8 @@ function ChatInput() {
                             <FormatListBulletedIcon/>
                         </Left>
                         <Middle>
-                               <Button variant="contained" color="primary">Dark</Button>
-                               <Button variant="contained" color="secondary">Light</Button>
+                               <Button variant="contained" color="dark" id="darkBtn">Dark</Button>
+                               <Button variant="contained" color="secondary" id="lightBtn">Light</Button>
                         </Middle>
                         <Right>
                             <FontDownloadIcon/>
@@ -52,9 +53,20 @@ function ChatInput() {
 export default ChatInput
 
 const Container = styled.div`
+    
     padding: 0 20px;
     padding-bottom: 24px;
-  
+    #lightBtn, darkBtn {
+        margin: 0 1rem;
+    }
+  #darkBtn {
+      background: #333;
+      color: #f4f4f4
+  }
+  #lightBtn  {
+      background: #f4f4f4;
+      color: #333;
+  }
    
 `;
 
@@ -69,6 +81,8 @@ const InputContainer = styled.div`
             flex: 1;
             border: none;
             font-size: 13px;
+            background: rgba(0, 0, 0, 0);
+            color: #f4f4f4;
             
         }
         input:focus {
@@ -106,10 +120,12 @@ align-items: center;
 
 const Left = styled.div`
     font-weight: 400;
+    color: white;
 `;
 const Middle = styled.div`
 font-weight: 400;
 `;
 const Right = styled.div`
 font-weight: 400;
+color: white;
 `;

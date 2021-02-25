@@ -11,7 +11,8 @@ import db from './firebase'
 
 
 function App() {
-  const [rooms, setRooms] = useState([])
+  const [rooms, setRooms] = useState([]);
+
   const getChannels = () =>  {
     db.collection('rooms').onSnapshot((snapshot) =>  {
        setRooms(snapshot.docs.map((doc) => {

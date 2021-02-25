@@ -1,0 +1,20 @@
+function Chat() {
+  const [darkmode, setdarkmode] = useState(false)
+
+  function changeMode() {
+    setdarkmode(!darkmode)
+  }
+
+  return (
+    <Container>
+      <Header style={{background: darkmode ? "black" : "white"}}>
+        Hi
+        <button onClick={changeMode}>
+          Change background
+        </button>
+      </Header>
+    </Container>
+  )
+}
+
+export default Chat;

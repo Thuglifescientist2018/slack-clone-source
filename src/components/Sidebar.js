@@ -20,7 +20,7 @@ function Sidebar(props) {
         <Container>
             <WorkspaceContainer>
                 <Name>
-                    CleverProgrammer
+                    ThugLifeScientist
                 </Name>
                 <NewMessage>
                     <AddCircleOutlineIcon />
@@ -64,7 +64,12 @@ export default Sidebar
 
 
 const Container = styled.div`
-    background: #3F0E40;
+    background: url('https://source.unsplash.com/ynFOw5ame58/400x1200');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset -10px 10px 10px white;
 
 `
 
@@ -76,6 +81,7 @@ const WorkspaceContainer = styled.div`
     padding-left: 19px;
     justify-content: space-between;
     border-bottom: 1px solid  #532753;
+    background: rgba(0, 0, 0, 0.3);
 `
 
 const Name = styled.div``
@@ -96,24 +102,28 @@ const NewMessage = styled.div`
 
 const MainChannels = styled.div`
     padding-top: 20px;
+    background: rgba(0, 0, 0, 0.5);
 `
 
 const MainChannelItem = styled.div`
     color: rgb(188,171,188);
     display: grid;
     grid-template-columns: 15% auto;
-    height: 28px;
+    min-height: 28px;
     align-items: center;
     padding-left: 19px;
     cursor: pointer;
     :hover {
-        background: #350D36;
+        background: white;
+        color: black;
     }
 `
 
 const ChannelsContainer = styled.div`
     color: rgb(188,171,188);
     margin-top: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.75rem 1rem;
 `
 
 const NewChannelContainer = styled.div`
@@ -133,7 +143,9 @@ const Channel = styled.div`
     align-items: center;
     padding-left: 19px;
     cursor: pointer;
+        transition: background 0.5s;
     :hover {
-        background: #350D36;
+        background: white;
+        color: black;
     }
 `
