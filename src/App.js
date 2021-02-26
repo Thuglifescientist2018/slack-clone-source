@@ -10,7 +10,12 @@ import db from './firebase'
 import { auth, provider } from "./firebase";
 
 
+
+
+
+
 function App() {
+
 
   const [rooms, setRooms] = useState([]) 
   const [ user, setUser ] = useState(JSON.parse(localStorage.getItem('user'))); 
@@ -52,7 +57,11 @@ function App() {
                   <Chat user={user} />
                 </Route>
                 <Route path="/">
-                  Select or Create Channel
+                  <CreateOrSelect>
+                          <div className="container">
+                            <h2>Create or Select Channel</h2>
+                          </div>
+                  </CreateOrSelect>
                 </Route>
               </Switch>
             </Main>
@@ -76,3 +85,21 @@ const Main = styled.div`
   display: grid;
   grid-template-columns: 260px auto;
   `
+
+const CreateOrSelect = styled.div`
+display: flex;
+justify-content: center;
+align-items:center;
+background: url('https://source.unsplash.com/u27Rrbs9Dwc/1920x1080') no-repeat center center/cover;
+color: white;
+.container  {
+  background: rgba(0, 0, 0, 0.8) no-repeat center center/cover;
+  height: 40vh;
+  width: 40vw;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  font-size: 9rem;
+  
+}
+`;

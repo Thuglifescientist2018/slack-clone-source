@@ -2,11 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import {ToggleDark} from './DarkMode';
+
 function Header({user, signOut}) {
     return (
         <Container>
-            <ToggleDark/>
             <Main>
                 <AccessTimeIcon />
                 <SearchContainer>
