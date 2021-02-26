@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, {useState} from 'react';
+import styled from 'styled-components';
 import SendIcon from '@material-ui/icons/Send';
 import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicTwoToneIcon from '@material-ui/icons/FormatItalicTwoTone';
@@ -13,14 +13,19 @@ import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined'
 import AttachFileOutlinedIcon from '@material-ui/icons/AttachFileOutlined';
 import {Button} from '@material-ui/core';
 
-function ChatInput(props) {
-
+function ChatInput({ sendMessage }) {
+    const [input, setInput] = useState("");
+    const send = (e) => {
+        e.preventDefault();
+        if(!input) return;
+        sendMessage(input)
+    }
     return (
         <Container>
             <InputContainer>
                 <form>
-                    <input type="text" placeholder="Message here..."/>
-                    <SendButton>
+                    <input onChange={(e) => setInput(e.target.value)} value={input} type="text" placeholder="Message here..."/>
+                    <SendButton onClick={send} type="submit">
                         <Send/>
                        
                     </SendButton>
@@ -34,10 +39,7 @@ function ChatInput(props) {
                             <LinkIcon/>
                             <FormatListBulletedIcon/>
                         </Left>
-                        <Middle>
-                               <Button variant="contained" color="dark" id="darkBtn">Dark</Button>
-                               <Button variant="contained" color="secondary" id="lightBtn">Light</Button>
-                        </Middle>
+                       
                         <Right>
                             <FontDownloadIcon/>
                             <AlternateEmailIcon/>
@@ -53,7 +55,11 @@ function ChatInput(props) {
 export default ChatInput
 
 const Container = styled.div`
-    
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
     padding: 0 20px;
     padding-bottom: 24px;
     #lightBtn, darkBtn {
@@ -90,7 +96,7 @@ const InputContainer = styled.div`
         }
     }
 `;
-const SendButton = styled.div`
+const SendButton = styled.button`
 background: #007a5a;
 border-radius: 2px;
 width: 32px;
@@ -100,6 +106,7 @@ align-items: center;
 justify-content: center;
 margin-right: 5px;
 cursor: pointer;
+border: none;
 .MuiSvgIcon-root {
     width: 18px;
 }
@@ -114,7 +121,7 @@ const TextFormat = styled.div`
 height: 40px;
 border-top: 1px solid #8D8D8E;
 display: flex;
-justify-content: space-around;
+justify-content: space-between;
 align-items: center;
 `;
 
@@ -122,9 +129,7 @@ const Left = styled.div`
     font-weight: 400;
     color: white;
 `;
-const Middle = styled.div`
-font-weight: 400;
-`;
+
 const Right = styled.div`
 font-weight: 400;
 color: white;
