@@ -17,7 +17,7 @@ function Login(props) {
             props.setUser(newUser);
         })
         .catch((error) => {
-            alert(error.message)
+            alert(error.message)  
         })
     }
     return (
