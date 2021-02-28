@@ -3,8 +3,10 @@ import styled from 'styled-components'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { sidebarItemsData } from '../data/SidebarData'
 import AddIcon from '@material-ui/icons/Add';
+import DeleteIcon from '@material-ui/icons/Delete';
 import db from '../firebase'
-import {useHistory} from 'react-router-dom'
+import {useHistory, Route, Redirect} from 'react-router-dom'
+
 
 function Sidebar(props) {
     const history = useHistory();
@@ -22,7 +24,15 @@ function Sidebar(props) {
             })
         }
     }
-
+    const deleteChannel = (id) => {
+       
+        db.collection("room").doc(id).delete().then(() => {
+            console.log(id,"Document successfully deleted!");
+        }).catch((error) => {
+            console.error("Error removing document: ", error);
+        });
+        
+    }
     return (
         <Container>
             <WorkspaceContainer>
@@ -55,6 +65,16 @@ function Sidebar(props) {
                        props.rooms.map(item => (
                             <Channel onClick={() => goToChannel(item.id)}>
                              # {item.name}
+                            <DeleteIcon onClick={() =>{
+                                return ( 
+                                db.collection('rooms').doc(item.id).delete()
+                                
+                                )
+                                
+                            }
+                        
+                        
+                        }/>
                             </Channel>
                        ))
                    }
